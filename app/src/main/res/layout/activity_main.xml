@@ -10,14 +10,16 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/frameContainer"
-        android:layout_above="@+id/bottomNavigation"
-        android:background="@color/cardview_shadow_start_color"/>
+        android:layout_above="@+id/bottomNavigation"/>
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:id="@+id/bottomNavigation"
-        app:menu="@menu/navigation_menu">
+        app:menu="@menu/navigation_menu"
+        android:background="@color/md_amber_600"
+        app:itemIconTint="@color/md_grey_700"
+        app:itemTextColor="@color/md_grey_700">
 
     </com.google.android.material.bottomnavigation.BottomNavigationView>
 </RelativeLayout>
