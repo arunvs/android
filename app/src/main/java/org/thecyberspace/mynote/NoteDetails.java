@@ -22,10 +22,14 @@ import butterknife.ButterKnife;
 public class NoteDetails extends AppCompatActivity {
 
     @BindView(R.id.note_content)
-    TextView noteContent;
+    TextView content;
 
     @BindView(R.id.note_title)
-    TextView noteTitle;
+    TextView title;
+
+    @BindView(R.id.editFab)
+    FloatingActionButton mEditFab;
+    Intent data;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,18 +40,21 @@ public class NoteDetails extends AppCompatActivity {
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        noteContent.setMovementMethod(new ScrollingMovementMethod());
+        content.setMovementMethod(new ScrollingMovementMethod());
 
-        Intent data = getIntent();
-        noteContent.setText(data.getStringExtra("content"));
-        noteTitle.setText(data.getStringExtra("title"));
+        data = getIntent();
+        content.setText(data.getStringExtra("content"));
+        title.setText(data.getStringExtra("title"));
 
-        FloatingActionButton fab = findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
+        mEditFab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                Intent intent = new Intent(view.getContext(), EditNote.class);
+                intent.putExtra("title",data.getStringExtra("title"));
+                intent.putExtra("content",data.getStringExtra("content"));
+                intent.putExtra("noteId",data.getStringExtra("noteId"));
+                startActivity(intent);
+
             }
         });
     }

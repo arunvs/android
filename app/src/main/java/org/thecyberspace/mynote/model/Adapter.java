@@ -25,7 +25,8 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(org.thecyberspace.mynote.R.layout.fragment_note,parent,false);
+        View view = LayoutInflater.from(parent.getContext())
+                .inflate(org.thecyberspace.mynote.R.layout.fragment_note,parent,false);
         return new ViewHolder(view);
     }
 
